@@ -1,0 +1,85 @@
+{
+  "_doc": "The simulated shop: customers, the payment providers and the truth about who should have access. Only internal/world reads this file.",
+  "seed": 47,
+  "start": "2026-01-05T00:00:00Z",
+  "days": 90,
+  "customers": 9000,
+  "providers": {
+    "chargebee_share": 0.3
+  },
+  "countries": {
+    "DE": 0.42,
+    "AT": 0.08,
+    "CH": 0.05,
+    "FR": 0.06,
+    "NL": 0.05,
+    "ES": 0.05,
+    "IT": 0.05,
+    "PL": 0.04,
+    "GB": 0.08,
+    "US": 0.12
+  },
+  "plans": {
+    "monthly": 0.5,
+    "yearly": 0.25,
+    "exam_pass": 0.25
+  },
+  "trial_share": 0.4,
+  "renewal_failure": 0.1,
+  "dunning_retries_hours": [
+    24,
+    72,
+    120
+  ],
+  "dunning_recovery": 0.35,
+  "cancel_per_period": 0.15,
+  "dispute_share": 0.005,
+  "withdrawal_share": 0.03,
+  "contract_grace_days": 7,
+  "delivery": {
+    "fast_share": 0.85,
+    "fast_median_seconds": 2,
+    "slow_share": 0.13,
+    "slow_max_minutes": 30,
+    "late_min_hours": 1,
+    "late_max_hours": 6,
+    "duplicate_share": 0.04,
+    "duplicate_max_minutes": 120,
+    "lost_share": 0.004,
+    "outage": {
+      "provider": "stripe",
+      "day": 41,
+      "hours": 3
+    }
+  },
+  "sessions_per_day": 0.5,
+  "return_after_checkout_seconds": 5,
+  "first_use_after_checkout_seconds": 20,
+  "campus": {
+    "licences": 4,
+    "seats": [
+      120,
+      80,
+      60,
+      40
+    ],
+    "members": 330,
+    "code_typo_share": 0.15
+  },
+  "tickets": {
+    "paid_no_access_share": 0.6,
+    "double_charge_share": 0.006,
+    "cancel_request_share": 0.02,
+    "injection": 25,
+    "other": 40,
+    "person_minutes": 9
+  },
+  "vat": {
+    "checkouts": 4000,
+    "billing_missing": 0.06,
+    "ip_mismatch": 0.08,
+    "card_mismatch": 0.05,
+    "b2b_share": 0.06,
+    "invalid_vat_id_share": 0.25
+  }
+}

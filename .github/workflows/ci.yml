@@ -1,0 +1,93 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: shop
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -proot" --health-interval=5s --health-timeout=3s --health-retries=20
+    env:
+      SHOP_TEST_MYSQL_DSN: root:root@tcp(127.0.0.1:3306)/shop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: gofmt
+        run: test -z "$(gofmt -l .)" || (gofmt -l . && exit 1)
+      - run: go vet ./...
+      - name: tests (memory and MySQL 8)
+        run: go test -race -p 1 ./...
+
+  reports:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: the dev study reproduces the committed report
+        run: |
+          go run ./cmd/shop study --world dev
+          python3 - <<'PY'
+          import json, subprocess
+          new = json.load(open("reports/dev.json"))
+          old = json.loads(subprocess.check_output(["git", "show", "HEAD:reports/dev.json"]))
+          for r in (new, old):
+              r.pop("took")
+              for a in r["access"]:
+                  a.pop("events_per_second")
+          assert new == old, "reports/dev.json does not reproduce"
+          PY
+      - name: the README dashboard matches the reports
+        run: |
+          git checkout reports/dev.json
+          go run ./cmd/shop readme
+          git diff --exit-code README.md docs/dashboard.svg
+
+  bench:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: shop
+        ports: ["3306:3306"]
+        options: >-
+          --health-cmd="mysqladmin ping -proot" --health-interval=5s --health-timeout=3s --health-retries=20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.24"
+      - name: replay into MySQL 8, compare with memory, race the seats
+        run: |
+          go run ./cmd/shop bench -dsn 'root:root@tcp(127.0.0.1:3306)/shop' -customers 600 | tee bench.txt
+          grep -q "same answers true, same ledger true" bench.txt
+          grep -q "10 seats taken" bench.txt
+
+  console:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build

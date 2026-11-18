@@ -1,0 +1,14 @@
+{
+  "_doc": "The held-out world: run once (docs/heldout.md). Other customers and luck, worse webhook delivery, more Chargebee, and support tickets phrased in ways the reader was not written against.",
+  "seed": 913,
+  "providers": {"chargebee_share": 0.45},
+  "delivery": {
+    "fast_share": 0.8, "fast_median_seconds": 3,
+    "slow_share": 0.16, "slow_max_minutes": 45,
+    "late_min_hours": 1, "late_max_hours": 8,
+    "duplicate_share": 0.07, "duplicate_max_minutes": 180,
+    "lost_share": 0.008,
+    "outage": {"provider": "chargebee", "day": 58, "hours": 5}
+  },
+  "phrasing": "heldout"
+}

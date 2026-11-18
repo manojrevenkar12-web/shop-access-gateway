@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="512" viewBox="0 0 960 512" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="32" y="40" font-size="20" font-weight="600" fill="#1d2a35">Who gets in, and who pays: dev world, seed 47</text>
+<text x="32" y="62" font-size="13" fill="#5f6b76">18,902 webhook deliveries, 229,473 page checks, 1,443 support tickets, the same for every design</text>
+<rect x="32" y="84" width="212" height="92" rx="6" fill="none" stroke="#d9dee3"/>
+<text x="48" y="128" font-size="28" font-weight="700" fill="#0f7b6c">3</text>
+<text x="230" y="128" font-size="14" fill="#b4532a" text-anchor="end"><tspan text-decoration="line-through">1,462</tspan> naive</text>
+<text x="48" y="156" font-size="13" fill="#5f6b76">customers wrongly locked out</text>
+<rect x="260" y="84" width="212" height="92" rx="6" fill="none" stroke="#d9dee3"/>
+<text x="276" y="128" font-size="28" font-weight="700" fill="#0f7b6c">€0</text>
+<text x="458" y="128" font-size="14" fill="#b4532a" text-anchor="end"><tspan text-decoration="line-through">€19,120</tspan> naive</text>
+<text x="276" y="156" font-size="13" fill="#5f6b76">access given away</text>
+<rect x="488" y="84" width="212" height="92" rx="6" fill="none" stroke="#d9dee3"/>
+<text x="504" y="128" font-size="28" font-weight="700" fill="#0f7b6c">1,239</text>
+<text x="686" y="128" font-size="14" fill="#b4532a" text-anchor="end"><tspan text-decoration="line-through">0</tspan> today</text>
+<text x="504" y="156" font-size="13" fill="#5f6b76">tickets closed without a person</text>
+<rect x="716" y="84" width="212" height="92" rx="6" fill="none" stroke="#d9dee3"/>
+<text x="732" y="128" font-size="28" font-weight="700" fill="#0f7b6c">21</text>
+<text x="914" y="128" font-size="14" fill="#b4532a" text-anchor="end"><tspan text-decoration="line-through">207</tspan> today</text>
+<text x="732" y="156" font-size="13" fill="#5f6b76">support person-hours</text>
+<text x="32" y="214" font-size="14" font-weight="600" fill="#1d2a35">Wrong denials per 1,000 page checks (log scale), one row per design step</text>
+<text x="32" y="250" font-size="13" font-weight="400" fill="#1d2a35">naive</text>
+<rect x="250" y="236" width="568.5" height="20" rx="3" fill="#b4532a"/>
+<text x="826.5" y="251" font-size="13" fill="#1d2a35">12.34</text>
+<text x="32" y="284" font-size="13" font-weight="400" fill="#1d2a35">dedupe</text>
+<rect x="250" y="270" width="532.8" height="20" rx="3" fill="#5f6b76"/>
+<text x="790.8" y="285" font-size="13" fill="#1d2a35">9.12</text>
+<text x="32" y="318" font-size="13" font-weight="400" fill="#1d2a35">dedupe_order</text>
+<rect x="250" y="304" width="532.8" height="20" rx="3" fill="#5f6b76"/>
+<text x="790.8" y="319" font-size="13" fill="#1d2a35">9.12</text>
+<text x="32" y="352" font-size="13" font-weight="400" fill="#1d2a35">plus_fulfil</text>
+<rect x="250" y="338" width="332.9" height="20" rx="3" fill="#5f6b76"/>
+<text x="590.9" y="353" font-size="13" fill="#1d2a35">1.68</text>
+<text x="32" y="386" font-size="13" font-weight="400" fill="#1d2a35">plus_reconcile</text>
+<rect x="250" y="372" width="198.2" height="20" rx="3" fill="#5f6b76"/>
+<text x="456.2" y="387" font-size="13" fill="#1d2a35">0.54</text>
+<text x="32" y="420" font-size="13" font-weight="700" fill="#1d2a35">gateway</text>
+<rect x="250" y="406" width="180.6" height="20" rx="3" fill="#0f7b6c"/>
+<text x="438.6" y="421" font-size="13" fill="#1d2a35">0.46</text>
+<text x="32" y="454" font-size="13" font-weight="400" fill="#1d2a35">gateway_refetch</text>
+<rect x="250" y="440" width="180.6" height="20" rx="3" fill="#5f6b76"/>
+<text x="438.6" y="455" font-size="13" fill="#1d2a35">0.46</text>
+<line x1="32" x2="928" y1="480" y2="480" stroke="#d9dee3"/>
+<text x="32" y="498" font-size="12" fill="#5f6b76">Simulated providers and customers; see Limits in the README.</text>
+</svg>

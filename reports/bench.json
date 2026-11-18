@@ -1,0 +1,19 @@
+{
+  "engine": "10.11.14-MariaDB-0ubuntu0.24.04.1",
+  "customers": 2830,
+  "deliveries": 5256,
+  "access_checks_in_replay": 71015,
+  "replay_seconds": 69.916751992,
+  "same_answers_as_memory": true,
+  "different_answers": 0,
+  "same_ledger_as_memory": true,
+  "access_p50_us": 216,
+  "access_p99_us": 498,
+  "parallel_checks_per_second": 7991,
+  "workers": 8,
+  "ingest_events_per_second": 2303.215747591932,
+  "ingest_workers": 8,
+  "seat_race": "50 students joined a 10-seat licence at once: 10 seats taken",
+  "seats_taken": 10,
+  "seats_on_licence": 10
+}

@@ -1,0 +1,49 @@
+/* Design tokens. Every colour, size and duration in the console comes from here.
+   A billing desk's question is binary (in or out) with a reason; the palette is a cool clinical paper with one
+   colour for open, one for shut and one for "held" (grace periods, cases a person decides). */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+
+  --color-paper: #f4f6f8;
+  --color-sheet: #ffffff;
+  --color-ink: #16202a;
+  --color-muted: #5a6875;
+  --color-rule: #d6dde3;
+  --color-action: #1f4f8f;
+  --color-action-soft: #e3ebf5;
+  --color-open: #146c4a;
+  --color-open-soft: #dff0e7;
+  --color-shut: #a1321b;
+  --color-shut-soft: #f6e3dd;
+  --color-held: #8a5a00;
+  --color-held-soft: #f5ead2;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+
+  --radius-field: 0.25rem;
+  --radius-panel: 0.5rem;
+  --width-page: 78rem;
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-feature-settings: "tnum" 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-action);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}

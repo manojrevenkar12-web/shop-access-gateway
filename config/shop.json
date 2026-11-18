@@ -1,0 +1,19 @@
+{
+  "_doc": "Settings of the shop and its gateway. The simulated world never reads this file.",
+  "grace_days": 7,
+  "renewal_buffer_hours": 30,
+  "plans": {
+    "monthly":   {"period_days": 30,  "price_cents": 3900,  "recurring": true,  "trial_days": 5},
+    "yearly":    {"period_days": 365, "price_cents": 29900, "recurring": true,  "trial_days": 0},
+    "exam_pass": {"period_days": 30,  "price_cents": 4900,  "recurring": false, "trial_days": 0}
+  },
+  "reconcile_hour": 3,
+  "withdrawal_days": 14,
+  "double_charge_window_minutes": 15,
+  "vat": {
+    "home": "DE",
+    "rates": {"DE": 19.0, "AT": 20.0, "FR": 20.0, "NL": 21.0, "ES": 21.0, "IT": 22.0, "PL": 23.0, "GB": 20.0, "CH": 8.1, "US": 0.0},
+    "eu": ["DE", "AT", "FR", "NL", "ES", "IT", "PL"]
+  },
+  "gate": {"max_wrong_denials_per_1000_checks": 1.0, "max_leaked_euros": 50, "max_wrong_money_actions": 0, "max_silent_vat_errors_per_1000_checkouts": 1.0}
+}
