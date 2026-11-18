@@ -95,9 +95,9 @@ Seed 913, 45% Chargebee instead of 30%, more duplicates and losses, a five-hour 
 |---|---:|
 | Same answer as the in-memory store on every one of 71,015 page checks | yes |
 | Same final ledger for all 2,830 customers | yes |
-| Webhook ingest, 8 workers partitioned by object | 2,303 events/s |
-| Access check p50 / p99 | 216 µs / 498 µs |
-| Access checks, 8 concurrent workers | 7,991 /s |
+| Webhook ingest, 8 workers partitioned by object | 2,121 events/s |
+| Access check p50 / p99 | 238 µs / 728 µs |
+| Access checks, 8 concurrent workers | 7,740 /s |
 | 50 students joined a 10-seat licence at once: 10 seats taken | yes |
 
 Measured on a laptop-class container with the database on the same machine; the point is the shape (indexes used, no lock contention between objects), not the absolute numbers.

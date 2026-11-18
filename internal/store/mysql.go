@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"math/rand/v2"
 	"strings"
 	"time"
 
@@ -134,20 +135,25 @@ func trunc(s string, n int) string {
 	return s
 }
 
-// retry runs a transaction again when the database chose it as a deadlock victim or a lock wait timed out; the
-// transaction was rolled back, so running it again is safe.
+// retry runs a transaction again when the database chose it as a deadlock victim, a lock wait timed out, or a
+// concurrent writer created the same new row first; the transaction was rolled back, so running it again is safe.
 func retry(fn func() error) error {
 	var err error
-	for attempt := 0; attempt < 4; attempt++ {
+	for attempt := 0; attempt < 10; attempt++ {
 		err = fn()
 		var me *mysql.MySQLError
-		if !errors.As(err, &me) || (me.Number != 1213 && me.Number != 1205) {
+		if !errors.As(err, &me) || (me.Number != 1213 && me.Number != 1205 && me.Number != 1062) {
 			return err
 		}
-		time.Sleep(time.Duration(attempt+1) * 5 * time.Millisecond)
+		time.Sleep(time.Duration(1+rand.IntN(5*(attempt+1))) * time.Millisecond)
 	}
 	return err
 }
+
+// readCommitted avoids gap locks: a lock on a row that does not exist yet blocks nobody, so concurrent first writes
+// for different objects do not deadlock. Two first writes for the same object collide on the primary key (1062) and
+// the loser runs again, now finding and locking the row.
+var readCommitted = &sql.TxOptions{Isolation: sql.LevelReadCommitted}
 
 // Apply writes a change in one transaction: the processed mark, the row lock, the snapshot and its history.
 func (s *MySQL) Apply(ctx context.Context, c Change) error {
@@ -155,7 +161,7 @@ func (s *MySQL) Apply(ctx context.Context, c Change) error {
 }
 
 func (s *MySQL) apply(ctx context.Context, c Change) (err error) {
-	tx, err := s.db.BeginTx(ctx, nil)
+	tx, err := s.db.BeginTx(ctx, readCommitted)
 	if err != nil {
 		return err
 	}
@@ -189,14 +195,17 @@ func (s *MySQL) apply(ctx context.Context, c Change) (err error) {
 		}
 		args := append([]any{c.Sub.ID}, subArgs(c)...)
 		ph := strings.TrimSuffix(strings.Repeat("?, ", len(args)), ", ")
-		var upd []string
-		for _, col := range strings.Split(subCols, ",") {
-			col = strings.TrimSpace(col)
-			upd = append(upd, col+" = VALUES("+col+")")
-		}
-		if _, e := tx.ExecContext(ctx, "INSERT INTO subscriptions (id, "+subCols+") VALUES ("+ph+
-			") ON DUPLICATE KEY UPDATE "+strings.Join(upd, ", "), args...); e != nil {
-			return e
+		if exists {
+			var set []string
+			for _, col := range strings.Split(subCols, ",") {
+				set = append(set, strings.TrimSpace(col)+" = ?")
+			}
+			upd := append(subArgs(c), c.Sub.ID)
+			if _, e := tx.ExecContext(ctx, "UPDATE subscriptions SET "+strings.Join(set, ", ")+" WHERE id = ?", upd...); e != nil {
+				return e
+			}
+		} else if _, e := tx.ExecContext(ctx, "INSERT INTO subscriptions (id, "+subCols+") VALUES ("+ph+")", args...); e != nil {
+			return e // 1062 when a concurrent first write won: retried
 		}
 		if _, e := tx.ExecContext(ctx, "INSERT INTO subscription_history (sub_id, "+subCols+") VALUES ("+ph+")",
 			args...); e != nil {
@@ -289,7 +298,7 @@ func (s *MySQL) JoinCampus(ctx context.Context, code string, user int64, at time
 }
 
 func (s *MySQL) join(ctx context.Context, code string, user int64, at time.Time) (l Licence, err error) {
-	tx, err := s.db.BeginTx(ctx, nil)
+	tx, err := s.db.BeginTx(ctx, readCommitted)
 	if err != nil {
 		return l, err
 	}
