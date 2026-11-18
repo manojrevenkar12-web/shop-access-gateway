@@ -174,6 +174,7 @@ func readme(root string) error {
 		p("| Customers wrongly locked out (naive) | %s (%s) | %s (%s) |", n(gw.UsersDenied), n(naive.UsersDenied), n(hg.UsersDenied), n(hn.UsersDenied))
 		p("| Access given away (naive) | €%s (€%s) | €%s (€%s) |", n(int(gw.LeakedEuros+0.5)), n(int(naive.LeakedEuros+0.5)), n(int(hg.LeakedEuros+0.5)), n(int(hn.LeakedEuros+0.5)))
 		p("| Support: right action | %s of %s | %s of %s |", n(agent.Right), n(agent.Tickets), n(ha.Right), n(ha.Tickets))
+		p("| Support: closed without a person | %s | %s |", n(agent.AutomatedRight), n(ha.AutomatedRight))
 		p("| Support: wrong refunds or grants | %d | %d |", agent.WrongMoney, ha.WrongMoney)
 		p("| Support: sent to a person | %s | %s |", n(agent.Escalated), n(ha.Escalated))
 		if len(held.VAT) == 2 {

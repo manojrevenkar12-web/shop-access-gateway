@@ -40,7 +40,7 @@ func dashboard(dev lab.Report, haveHeld bool, held lab.Report) string {
 	var b strings.Builder
 	w := func(f string, a ...any) { fmt.Fprintf(&b, f+"\n", a...) }
 	rows := len(dev.Access)
-	H := 210 + rows*34 + 64
+	H := 210 + rows*34 + 100
 	w(`<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 0 %d %d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">`, W, H, W, H)
 	w(`<rect width="100%%" height="100%%" fill="%s"/>`, paper)
 	w(`<text x="32" y="40" font-size="20" font-weight="600" fill="%s">Who gets in, and who pays: dev world, seed %d</text>`, ink, dev.Seed)
@@ -89,14 +89,24 @@ func dashboard(dev lab.Report, haveHeld bool, held lab.Report) string {
 		w(`<text x="%.1f" y="%d" font-size="13" fill="%s">%.2f</text>`, scale(a.WrongDenialsPer1k)+8, y+17, ink, a.WrongDenialsPer1k)
 	}
 	foot := top + 20 + rows*34 + 26
-	note := "Simulated providers and customers; see Limits in the README."
+	notes := []string{"Simulated providers, customers and tickets; see Limits in the README."}
 	if haveHeld {
-		hg := acc(held, lab.Proposed)
-		note = fmt.Sprintf("Held-out world (seed %d, run once): gateway %.2f wrong denials per 1,000, %s customers locked out, €%s given away. %s",
-			held.Seed, hg.WrongDenialsPer1k, n(hg.UsersDenied), n(int(hg.LeakedEuros+.5)), note)
+		hg, ha := acc(held, lab.Proposed), sup(held, "agent with evidence checks")
+		gate := "passed"
+		if !held.Gate.Pass {
+			gate = "failed"
+		}
+		notes = append([]string{
+			fmt.Sprintf("Held-out world (seed %d, run once): gateway %.2f wrong denials per 1,000 checks, %s wrongly locked out, €%s given away.",
+				held.Seed, hg.WrongDenialsPer1k, plural(hg.UsersDenied, "customer"), n(int(hg.LeakedEuros+.5))),
+			fmt.Sprintf("Its release gate %s: the support agent made %s and closed %s tickets without a person.",
+				gate, plural(ha.WrongMoney, "wrong refund"), n(ha.AutomatedRight)),
+		}, notes...)
 	}
 	w(`<line x1="32" x2="%d" y1="%d" y2="%d" stroke="%s"/>`, W-32, foot-18, foot-18, rule)
-	w(`<text x="32" y="%d" font-size="12" fill="%s">%s</text>`, foot, muted, note)
+	for i, t := range notes {
+		w(`<text x="32" y="%d" font-size="12" fill="%s">%s</text>`, foot+i*18, muted, t)
+	}
 	w(`</svg>`)
 	return b.String()
 }

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="512" viewBox="0 0 960 512" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="548" viewBox="0 0 960 548" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
 <rect width="100%" height="100%" fill="#ffffff"/>
 <text x="32" y="40" font-size="20" font-weight="600" fill="#1d2a35">Who gets in, and who pays: dev world, seed 47</text>
 <text x="32" y="62" font-size="13" fill="#5f6b76">18,902 webhook deliveries, 229,473 page checks, 1,443 support tickets, the same for every design</text>
@@ -41,5 +41,7 @@
 <rect x="250" y="440" width="180.6" height="20" rx="3" fill="#5f6b76"/>
 <text x="438.6" y="455" font-size="13" fill="#1d2a35">0.46</text>
 <line x1="32" x2="928" y1="480" y2="480" stroke="#d9dee3"/>
-<text x="32" y="498" font-size="12" fill="#5f6b76">Simulated providers and customers; see Limits in the README.</text>
+<text x="32" y="498" font-size="12" fill="#5f6b76">Held-out world (seed 913, run once): gateway 0.14 wrong denials per 1,000 checks, 1 customer wrongly locked out, €0 given away.</text>
+<text x="32" y="516" font-size="12" fill="#5f6b76">Its release gate failed: the support agent made 13 wrong refunds and closed 492 tickets without a person.</text>
+<text x="32" y="534" font-size="12" fill="#5f6b76">Simulated providers, customers and tickets; see Limits in the README.</text>
 </svg>

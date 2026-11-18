@@ -1,0 +1,399 @@
+{
+  "world": "heldout",
+  "seed": 913,
+  "days": 90,
+  "customers": 9330,
+  "subscriptions": 9000,
+  "webhook_deliveries": 19136,
+  "duplicated_deliveries": 1286,
+  "lost_events": 144,
+  "out_of_order_deliveries": 2,
+  "campus_members": 330,
+  "tickets": 1749,
+  "person_minutes_per_ticket": 9,
+  "chargebee_share": 0.45,
+  "access": [
+    {
+      "design": "naive",
+      "checks": 228915,
+      "wrong_denials": 4373,
+      "wrong_denials_per_1000": 19.103160561780573,
+      "first_use_denied": 1936,
+      "first_use_checks": 9330,
+      "wrong_grants": 297,
+      "users_wrongly_denied": 1976,
+      "users_wrongly_granted": 20,
+      "leaked_euros": 22243.146586789702,
+      "withheld_euros": 9663.318886970448,
+      "deliveries": 19136,
+      "duplicates_refused": 0,
+      "stale_refused": 0,
+      "reconcile_repairs": 0,
+      "events_per_second": 70812.02805056263,
+      "provider_api_calls": 0,
+      "campus_wrong_denials": 994,
+      "campus_wrong_grants": 246
+    },
+    {
+      "design": "dedupe",
+      "checks": 228915,
+      "wrong_denials": 3375,
+      "wrong_denials_per_1000": 14.743463731079222,
+      "first_use_denied": 1900,
+      "first_use_checks": 9330,
+      "wrong_grants": 79,
+      "users_wrongly_denied": 1942,
+      "users_wrongly_granted": 9,
+      "leaked_euros": 325.14658678970073,
+      "withheld_euros": 9390.318886970448,
+      "deliveries": 19136,
+      "duplicates_refused": 1286,
+      "stale_refused": 0,
+      "reconcile_repairs": 0,
+      "events_per_second": 64817.21655016441,
+      "provider_api_calls": 0,
+      "campus_wrong_denials": 33,
+      "campus_wrong_grants": 28
+    },
+    {
+      "design": "dedupe_order",
+      "checks": 228915,
+      "wrong_denials": 3375,
+      "wrong_denials_per_1000": 14.743463731079222,
+      "first_use_denied": 1900,
+      "first_use_checks": 9330,
+      "wrong_grants": 79,
+      "users_wrongly_denied": 1942,
+      "users_wrongly_granted": 9,
+      "leaked_euros": 325.14658678970073,
+      "withheld_euros": 9390.318886970448,
+      "deliveries": 19136,
+      "duplicates_refused": 1286,
+      "stale_refused": 4,
+      "reconcile_repairs": 0,
+      "events_per_second": 62024.381558800414,
+      "provider_api_calls": 0,
+      "campus_wrong_denials": 33,
+      "campus_wrong_grants": 28
+    },
+    {
+      "design": "plus_fulfil",
+      "checks": 228915,
+      "wrong_denials": 346,
+      "wrong_denials_per_1000": 1.5114780595417514,
+      "first_use_denied": 1,
+      "first_use_checks": 9330,
+      "wrong_grants": 79,
+      "users_wrongly_denied": 54,
+      "users_wrongly_granted": 9,
+      "leaked_euros": 325.14658678970073,
+      "withheld_euros": 458.9,
+      "deliveries": 19136,
+      "duplicates_refused": 1286,
+      "stale_refused": 3661,
+      "reconcile_repairs": 0,
+      "events_per_second": 71010.76479925883,
+      "provider_api_calls": 9000,
+      "campus_wrong_denials": 33,
+      "campus_wrong_grants": 28
+    },
+    {
+      "design": "plus_reconcile",
+      "checks": 228915,
+      "wrong_denials": 64,
+      "wrong_denials_per_1000": 0.27957975667824303,
+      "first_use_denied": 1,
+      "first_use_checks": 9330,
+      "wrong_grants": 35,
+      "users_wrongly_denied": 31,
+      "users_wrongly_granted": 8,
+      "leaked_euros": 0,
+      "withheld_euros": 0,
+      "deliveries": 19136,
+      "duplicates_refused": 1286,
+      "stale_refused": 3766,
+      "reconcile_repairs": 170,
+      "events_per_second": 19725.140841329827,
+      "provider_api_calls": 13340,
+      "campus_wrong_denials": 33,
+      "campus_wrong_grants": 28
+    },
+    {
+      "design": "gateway",
+      "checks": 228915,
+      "wrong_denials": 33,
+      "wrong_denials_per_1000": 0.14415831203721904,
+      "first_use_denied": 1,
+      "first_use_checks": 9330,
+      "wrong_grants": 35,
+      "users_wrongly_denied": 1,
+      "users_wrongly_granted": 8,
+      "leaked_euros": 0,
+      "withheld_euros": 0,
+      "deliveries": 19136,
+      "duplicates_refused": 1286,
+      "stale_refused": 3766,
+      "reconcile_repairs": 170,
+      "events_per_second": 22338.39388113009,
+      "provider_api_calls": 13340,
+      "campus_wrong_denials": 33,
+      "campus_wrong_grants": 28
+    },
+    {
+      "design": "gateway_refetch",
+      "checks": 228915,
+      "wrong_denials": 33,
+      "wrong_denials_per_1000": 0.14415831203721904,
+      "first_use_denied": 1,
+      "first_use_checks": 9330,
+      "wrong_grants": 35,
+      "users_wrongly_denied": 1,
+      "users_wrongly_granted": 8,
+      "leaked_euros": 0,
+      "withheld_euros": 0,
+      "deliveries": 19136,
+      "duplicates_refused": 1286,
+      "stale_refused": 1656,
+      "reconcile_repairs": 164,
+      "events_per_second": 23224.364246530586,
+      "provider_api_calls": 23913,
+      "campus_wrong_denials": 33,
+      "campus_wrong_grants": 28
+    }
+  ],
+  "paired_vs_proposed": [
+    {
+      "design": "naive",
+      "against": "gateway",
+      "only_design_wrong": 4602,
+      "only_proposed_wrong": 0,
+      "sign_test_p": 0
+    },
+    {
+      "design": "dedupe",
+      "against": "gateway",
+      "only_design_wrong": 3386,
+      "only_proposed_wrong": 0,
+      "sign_test_p": 0
+    },
+    {
+      "design": "dedupe_order",
+      "against": "gateway",
+      "only_design_wrong": 3386,
+      "only_proposed_wrong": 0,
+      "sign_test_p": 0
+    },
+    {
+      "design": "plus_fulfil",
+      "against": "gateway",
+      "only_design_wrong": 357,
+      "only_proposed_wrong": 0,
+      "sign_test_p": 3.449296445085789e-79
+    },
+    {
+      "design": "plus_reconcile",
+      "against": "gateway",
+      "only_design_wrong": 31,
+      "only_proposed_wrong": 0,
+      "sign_test_p": 9.313225746154776e-10
+    },
+    {
+      "design": "gateway_refetch",
+      "against": "gateway",
+      "only_design_wrong": 0,
+      "only_proposed_wrong": 0,
+      "sign_test_p": 1
+    }
+  ],
+  "support": [
+    {
+      "agent": "people only (today)",
+      "tickets": 1675,
+      "right": 131,
+      "automated": 0,
+      "automated_right": 0,
+      "escalated": 1675,
+      "wrong_money_or_access_actions": 0,
+      "double_refunds": 0,
+      "person_hours": 251.25000000000665,
+      "by_kind": {
+        "campus": [
+          9,
+          46
+        ],
+        "cancel": [
+          2,
+          123
+        ],
+        "double_charge": [
+          0,
+          98
+        ],
+        "injection": [
+          22,
+          22
+        ],
+        "other": [
+          34,
+          34
+        ],
+        "paid_no_access": [
+          0,
+          1211
+        ],
+        "withdrawal": [
+          64,
+          141
+        ]
+      },
+      "wrong_actions": {
+        "cancel -\u003e escalate": 121,
+        "explain_single_charge -\u003e escalate": 21,
+        "explain_unpaid -\u003e escalate": 58,
+        "join_campus -\u003e escalate": 37,
+        "refund_duplicate -\u003e escalate": 77,
+        "refund_withdrawal -\u003e escalate": 77,
+        "sync_grant -\u003e escalate": 1153
+      }
+    },
+    {
+      "agent": "agent without checks",
+      "tickets": 1675,
+      "right": 546,
+      "automated": 547,
+      "automated_right": 469,
+      "escalated": 1128,
+      "wrong_money_or_access_actions": 78,
+      "double_refunds": 0,
+      "person_hours": 169.20000000000354,
+      "by_kind": {
+        "campus": [
+          24,
+          46
+        ],
+        "cancel": [
+          2,
+          123
+        ],
+        "double_charge": [
+          33,
+          98
+        ],
+        "injection": [
+          0,
+          22
+        ],
+        "other": [
+          34,
+          34
+        ],
+        "paid_no_access": [
+          379,
+          1211
+        ],
+        "withdrawal": [
+          74,
+          141
+        ]
+      },
+      "wrong_actions": {
+        "cancel -\u003e escalate": 121,
+        "escalate -\u003e refund_withdrawal": 54,
+        "explain_single_charge -\u003e escalate": 10,
+        "explain_single_charge -\u003e refund_duplicate": 8,
+        "explain_unpaid -\u003e escalate": 42,
+        "explain_unpaid -\u003e sync_grant": 16,
+        "join_campus -\u003e escalate": 22,
+        "refund_duplicate -\u003e escalate": 47,
+        "refund_withdrawal -\u003e escalate": 35,
+        "sync_grant -\u003e escalate": 774
+      }
+    },
+    {
+      "agent": "agent with evidence checks",
+      "tickets": 1675,
+      "right": 611,
+      "automated": 505,
+      "automated_right": 492,
+      "escalated": 1170,
+      "wrong_money_or_access_actions": 13,
+      "double_refunds": 0,
+      "person_hours": 175.50000000000378,
+      "by_kind": {
+        "campus": [
+          24,
+          46
+        ],
+        "cancel": [
+          2,
+          123
+        ],
+        "double_charge": [
+          40,
+          98
+        ],
+        "injection": [
+          10,
+          22
+        ],
+        "other": [
+          34,
+          34
+        ],
+        "paid_no_access": [
+          395,
+          1211
+        ],
+        "withdrawal": [
+          106,
+          141
+        ]
+      },
+      "wrong_actions": {
+        "cancel -\u003e escalate": 121,
+        "escalate -\u003e refund_withdrawal": 12,
+        "explain_single_charge -\u003e escalate": 10,
+        "explain_single_charge -\u003e refund_duplicate": 1,
+        "explain_unpaid -\u003e escalate": 42,
+        "join_campus -\u003e escalate": 22,
+        "refund_duplicate -\u003e escalate": 47,
+        "refund_withdrawal -\u003e escalate": 35,
+        "sync_grant -\u003e escalate": 774
+      }
+    }
+  ],
+  "vat": [
+    {
+      "method": "billing country",
+      "checkouts": 4000,
+      "wrong": 126,
+      "wrong_and_not_kept_for_review": 126,
+      "wrong_euros": 1620.7800000000002,
+      "under_collected_euros": 679.02,
+      "kept_for_review": 0,
+      "wrong_reverse_charge": 17
+    },
+    {
+      "method": "evidence + VIES",
+      "checkouts": 4000,
+      "wrong": 14,
+      "wrong_and_not_kept_for_review": 4,
+      "wrong_euros": 214.86999999999998,
+      "under_collected_euros": 65.49000000000001,
+      "kept_for_review": 48,
+      "wrong_reverse_charge": 0
+    }
+  ],
+  "gate": {
+    "design": "gateway",
+    "pass": false,
+    "checks": [
+      "ok wrong denials 0.14 per 1,000 checks (max 1.00)",
+      "ok leaked access €0 (max €50)",
+      "FAIL wrong money or access actions 13 (max 0)",
+      "ok double refunds 0 (max 0)",
+      "ok VAT errors not kept for review 1.00 per 1,000 checkouts (max 1.00)"
+    ]
+  },
+  "took": "7.051s"
+}
